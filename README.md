@@ -1,22 +1,21 @@
 # 🖨️ Paras Printers — Full-Stack Packaging Platform
 
-Add professional GitHub badges for:
-- Next.js
-- Node.js + Express
-- MongoDB
-- Security / MFA / CSRF / Rate Limiting
+<p align="center">
+  <img src="https://img.shields.io/badge/Frontend-Next.js-black?style=for-the-badge&logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+  <img src="https://img.shields.io/badge/Security-MFA%20%7C%20CSRF%20%7C%20Rate%20Limit-red?style=for-the-badge" alt="Security">
+</p>
 
-Add a short project description:
-
-"Paras Printers is a modern, secure and responsive full-stack web platform for a packaging and label manufacturing business. It allows customers to explore products and services, create and verify accounts, securely authenticate, manage their profiles, and request quotations."
+> A modern, secure and responsive web platform for **Paras Printers**, built to showcase packaging and label products, manage customer accounts and support secure quotation workflows.
 
 ---
 
 ## ✨ Overview
 
-Explain briefly that Paras Printers is a full-stack web application designed for a packaging and label manufacturing business.
+**Paras Printers** is a full-stack web application designed for a packaging and label manufacturing business.
 
-Mention that customers can:
+Customers can:
 
 - Explore products and services
 - Create and verify an account
@@ -27,17 +26,11 @@ Mention that customers can:
 - Request quotations
 - Use the platform across desktop, tablet and mobile
 
-Mention that the application uses:
-- Next.js frontend
-- Node.js + Express REST API
-- MongoDB/Mongoose database
-- Modular and security-focused architecture
+The application follows a modular architecture with a **Next.js frontend**, **Node.js + Express REST API**, and **MongoDB/Mongoose database**.
 
 ---
 
 ## 🚀 Key Features
-
-Include these features:
 
 - 🏠 Professional corporate homepage
 - 📦 Product and service discovery
@@ -58,114 +51,126 @@ Include these features:
 
 ---
 
-## 🛡️ Security Highlights
+# 🛡️ Security Highlights
 
 ### 🔐 Authentication
 
-Show this workflow:
-
+```text
 Signup
-↓
+  ↓
 Email Verification
-↓
+  ↓
 Login
-↓
+  ↓
 MFA (if enabled)
-↓
+  ↓
 Authenticated Session
-↓
+  ↓
 Account / Protected Features
+```
 
 ### ✉️ Email Verification
 
-Explain that verification tokens are securely generated, stored in hashed form, expire after a configured period, and cannot be reused.
+Verification tokens are generated securely, stored in hashed form, expire after a configured period and cannot be reused.
 
 ### 🔑 Password Security
 
-Mention that passwords are hashed using bcrypt before being stored in MongoDB.
+Passwords are hashed using **bcrypt** before being stored in MongoDB.
 
 ### 🛡️ MFA
 
-Mention support for:
+Supports:
 
 - Authenticator-based MFA
-- MFA setup and confirmation
+- MFA setup/confirmation
 - MFA login verification
 - MFA disabling
 - Recovery codes
 
 ### 🍪 Secure Sessions
 
-Mention security-focused cookie settings:
+Authentication cookies use security-focused options such as:
 
-- HttpOnly
-- Secure in production
-- SameSite
+```text
+HttpOnly
+Secure in production
+SameSite
+```
 
 ### 🧱 CSRF Protection
 
-Mention that state-changing requests such as POST, PUT, PATCH and DELETE are protected against CSRF attacks.
+State-changing requests such as:
+
+```text
+POST
+PUT
+PATCH
+DELETE
+```
+
+are protected against CSRF attacks.
 
 ### 🚦 Rate Limiting
 
-Explain that sensitive authentication endpoints use rate limiting to reduce brute-force and abuse attempts.
+Sensitive authentication endpoints are rate-limited to reduce brute-force and abuse attempts.
 
 ### 🔒 Protected APIs
 
-Include this example:
+Private endpoints use authentication middleware:
 
+```js
 router.get("/me", protect, getMe);
+```
 
-Explain that protected endpoints use authentication middleware and sensitive information such as passwords, password hashes, secrets, MFA secrets and database credentials are never returned to the frontend.
-
----
-
-## 🔄 Application Workflow
-
-Add a Mermaid flowchart showing:
-
-Visitor
-→ Account?
-→ If No: Signup
-→ Verify Email
-→ Login
-→ MFA if enabled
-→ Home
-→ Account / Products / Request Quote
-
-Also show:
-Login
-→ Forgot Password
-→ Password Recovery
-→ Login
-
-Use a clean Mermaid flowchart.
+Sensitive values such as passwords, password hashes, secrets, MFA secrets and database credentials are never returned to the frontend.
 
 ---
 
-## 🏗️ Architecture
+# 🔄 Application Workflow
 
-Add a Mermaid architecture diagram:
+```mermaid
+flowchart TD
+    A[👤 Visitor] --> B{Account?}
 
-Customer
-→ Next.js Frontend
-→ Express REST API
-→ Security Middleware
-→ Controllers
-→ MongoDB
+    B -- No --> C[📝 Signup]
+    C --> D[📧 Verify Email]
+    D --> E[🔐 Login]
 
-Also connect Controllers to:
-- Email / SMTP
+    B -- Yes --> E
 
-Use appropriate icons/emojis where useful.
+    E --> F{MFA Enabled?}
+    F -- Yes --> G[🔢 MFA Verification]
+    F -- No --> H[🏠 Home]
+    G --> H
+
+    H --> I[👤 Account]
+    H --> J[📦 Products]
+    H --> K[🧾 Request Quote]
+
+    E --> L[🔑 Password Recovery]
+    L --> E
+```
 
 ---
 
-## 🧰 Technology Stack
+# 🏗️ Architecture
 
-Create a concise markdown table:
+```mermaid
+flowchart LR
+    U[👤 Customer] --> F[🖥️ Next.js Frontend]
+    F --> A[⚡ Express REST API]
+    A --> M[🛡️ Security Middleware]
+    M --> C[🎮 Controllers]
+    C --> D[(🍃 MongoDB)]
+    C --> E[✉️ Email / SMTP]
+```
+
+---
+
+# 🧰 Technology Stack
 
 | Layer | Technologies |
+|---|---|
 | Frontend | Next.js, React, JavaScript/JSX |
 | Styling | Tailwind CSS, CSS Variables |
 | Icons | Lucide React |
@@ -181,10 +186,9 @@ Create a concise markdown table:
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
-Show this structure:
-
+```text
 ParasPrintersNew/
 │
 ├── frontend/
@@ -208,36 +212,34 @@ ParasPrintersNew/
 │   └── package.json
 │
 └── README.md
+```
 
 ---
 
-## 📡 Important API Endpoints
-
-Create a concise table:
+# 📡 Important API Endpoints
 
 | Method | Endpoint | Access |
-| POST | /api/auth/signup | Public |
-| POST | /api/auth/login | Public |
-| POST | /api/auth/logout | Auth Flow |
-| GET | /api/auth/me | Protected |
-| GET | /api/auth/verify-email | Public |
-| POST | /api/auth/resend-verification | Public |
-| POST | /api/auth/forgot-password | Public |
-| POST | /api/auth/reset-password | Public |
-| POST | /api/auth/change-password | Protected |
-| POST | /api/auth/verify-mfa | Auth Flow |
-| POST | /api/auth/verify-mfa-recovery | Auth Flow |
-| POST | /api/auth/mfa/setup | Protected |
-| POST | /api/auth/mfa/confirm | Protected |
-| POST | /api/auth/mfa/disable | Protected |
+|---|---|---|
+| POST | `/api/auth/signup` | Public |
+| POST | `/api/auth/login` | Public |
+| POST | `/api/auth/logout` | Auth Flow |
+| GET | `/api/auth/me` | Protected |
+| GET | `/api/auth/verify-email` | Public |
+| POST | `/api/auth/resend-verification` | Public |
+| POST | `/api/auth/forgot-password` | Public |
+| POST | `/api/auth/reset-password` | Public |
+| POST | `/api/auth/change-password` | Protected |
+| POST | `/api/auth/verify-mfa` | Auth Flow |
+| POST | `/api/auth/verify-mfa-recovery` | Auth Flow |
+| POST | `/api/auth/mfa/setup` | Protected |
+| POST | `/api/auth/mfa/confirm` | Protected |
+| POST | `/api/auth/mfa/disable` | Protected |
 
 ---
 
-## ⚙️ Getting Started
+# ⚙️ Getting Started
 
-### Prerequisites
-
-Mention:
+## Prerequisites
 
 - Node.js
 - npm
@@ -245,18 +247,23 @@ Mention:
 - MongoDB Atlas or local MongoDB
 - SMTP/email provider
 
-### 1. Clone Repository
+### 1. Clone
 
 ```bash
 git clone <YOUR_GITHUB_REPOSITORY_URL>
 cd ParasPrintersNew
+```
 
-2. Backend Setup
+### 2. Backend
+
+```bash
 cd backend
 npm install
+```
 
-Show an example backend .env:
+Create `backend/.env`:
 
+```env
 NODE_ENV=development
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
@@ -274,93 +281,121 @@ EMAIL_FROM=your_email@example.com
 
 EMAIL_VERIFICATION_URL=http://localhost:3000/verify-email
 PASSWORD_RESET_URL=http://localhost:3000/reset-password
+```
 
-3. Frontend Setup
+### 3. Frontend
+
+```bash
 cd frontend
 npm install
+```
 
-Show:
+Create `frontend/.env.local`:
 
+```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
+```
 
-4. Run Backend
+### 4. Run Backend
+
+```bash
 cd backend
 npm start
+```
 
-5. Run Frontend
+### 5. Run Frontend
+
+```bash
 cd frontend
 npm run dev
+```
 
-🧪 Testing Flow
+Open:
 
-Show:
+```text
+http://localhost:3000
+```
 
+---
+
+# 🧪 Testing Flow
+
+```text
 Signup
-↓
+ ↓
 Verify Email
-↓
+ ↓
 Login
-↓
+ ↓
 MFA (if enabled)
-↓
+ ↓
 Home
-↓
+ ↓
 Navbar → User Avatar + Name
-↓
+ ↓
 My Account
-↓
+ ↓
 Logout
+```
 
-Also mention testing:
+Also test:
 
-Forgot password
-Password reset
-MFA recovery
-Invalid/expired verification links
-Protected API routes
-Rate limiting
-CSRF-protected requests
+- Forgot password
+- Password reset
+- MFA recovery
+- Invalid/expired verification links
+- Protected API routes
+- Rate limiting
+- CSRF-protected requests
 
-Production Checklist
+---
 
-Add a checklist:
+# 🚀 Production Checklist
 
- Never commit .env files
- Use strong production secrets
- Enable HTTPS
- Enable secure cookies in production
- Configure production CORS
- Configure MongoDB Atlas securely
- Configure SMTP securely
- Keep CSRF and rate limiting enabled
- Remove sensitive debug logs
- Never expose passwords/secrets in API responses
- Test authentication, MFA and password recovery
+Before deployment:
 
- 🔮 Future Enhancements
+- [ ] Never commit `.env` files
+- [ ] Use strong production secrets
+- [ ] Enable HTTPS
+- [ ] Enable secure cookies in production
+- [ ] Configure production CORS
+- [ ] Configure MongoDB Atlas securely
+- [ ] Configure SMTP securely
+- [ ] Keep CSRF and rate limiting enabled
+- [ ] Remove sensitive debug logs
+- [ ] Never expose passwords/secrets in API responses
+- [ ] Test authentication, MFA and password recovery
 
-Mention:
+---
 
-🛒 Shopping cart and ordering
-💳 Online payments
-📦 Order tracking
-👨‍💼 Admin dashboard
-📊 Business analytics
-📧 Advanced notifications
-💬 WhatsApp integration
-☁️ Redis caching
-⚙️ Background job processing
-🚀 CI/CD and cloud scaling
+# 🔮 Future Enhancements
 
-👨‍💻 Author
+- 🛒 Shopping cart and ordering
+- 💳 Online payments
+- 📦 Order tracking
+- 👨‍💼 Admin dashboard
+- 📊 Business analytics
+- 📧 Advanced notifications
+- 💬 WhatsApp integration
+- ☁️ Redis caching
+- ⚙️ Background job processing
+- 🚀 CI/CD and cloud scaling
 
-Add:
+---
 
-Ashwani Pandey
+# 👨‍💻 Author
+
+**Ashwani Pandey**  
 Full-Stack Developer
 
-GitHub:
-https://github.com/ApAshwani142
+- GitHub: https://github.com/ApAshwani142
+- LinkedIn: https://www.linkedin.com/in/ashwani-pandey-12a068376
 
-LinkedIn:
-https://www.linkedin.com/in/ashwani-pandey-12a068376
+---
+
+<p align="center">
+  <strong>🖨️ Paras Printers</strong><br>
+  <sub>Secure • Scalable • Professional • Customer-focused</sub>
+</p>
+
+<p align="center">⭐ If you like the project, consider giving the repository a star!</p>
