@@ -203,49 +203,6 @@ export const FEATURED_PRODUCTS = [
   },
 ];
 
-export const INDUSTRIES = [
-  {
-    id: "ind-1",
-    title: "Pharmaceuticals & Healthcare",
-    slug: "pharmaceuticals-healthcare",
-    description: "Precision medical, bottle, and vial packaging labels engineered for cleanrooms and serialization compliance.",
-    iconName: "Pill",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop",
-    keyRequirements: ["Non-toxic adhesive", "Batch serialization", "Tamper evidence", "Mandrel wrap adhesion"],
-    recommendedProducts: ["Pharmaceutical Vial Labels", "Syrup Bottle Stickers", "Tamper Void Labels"],
-  },
-  {
-    id: "ind-2",
-    title: "Food & Packaged Beverages",
-    slug: "food-beverage",
-    description: "High-clarity waterproof stickers for water bottles, condiments, bakery items, and frozen foods.",
-    iconName: "Utensils",
-    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop",
-    keyRequirements: ["FDA compliance", "Moisture resistance", "Deep freeze adhesive", "Oil resistance"],
-    recommendedProducts: ["PVC Water Bottle Wrap Labels", "Jar Label Stickers", "Cold Storage Labels"],
-  },
-  {
-    id: "ind-3",
-    title: "FMCG & Cosmetics",
-    slug: "fmcg-cosmetics",
-    description: "Luxury foil stamped, embossed, and clear BOPP labels for personal care, shampoo, and perfume packaging.",
-    iconName: "Sparkles",
-    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop",
-    keyRequirements: ["High gloss foil", "No-label look clear BOPP", "Squeeze resistance", "Vibrant colors"],
-    recommendedProducts: ["Clear Cosmetic Labels", "Metallic Foil Stickers", "Shampoo Squeeze Bottle Labels"],
-  },
-  {
-    id: "ind-4",
-    title: "Logistics & Warehousing",
-    slug: "logistics-warehousing",
-    description: "Ultra-durable PE and thermal barcode labels ensuring 100% scan rates for supply chain logistics.",
-    iconName: "Truck",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
-    keyRequirements: ["Smudge proof", "High speed scanning", "Weather durability", "Aggressive adhesive"],
-    recommendedProducts: ["PE Barcode Label Stickers", "Carton Shipping Labels", "Thermal Transfer Ribbons"],
-  },
-];
-
 export const MACHINES = [
   {
     id: "m-1",
@@ -343,34 +300,5 @@ export const FAQS = [
     category: "Samples & Quotes",
     question: "Can I request physical label samples before placing a bulk order?",
     answer: "Absolutely. We provide sample test rolls or sample swatch booklets so you can test barcode scanning and adhesion on your actual product containers.",
-  },
-];
-
-export const BLOGS = [
-  {
-    id: "b-1",
-    title: "Choosing the Right Barcode Label Material: PE vs. Thermal Transfer Paper",
-    slug: "choosing-right-barcode-label-material-pe-vs-paper",
-    excerpt: "Learn how selecting the right label substrate prevents barcode scanning errors in cold storage and high-speed warehouse logistics.",
-    content: "When selecting barcode labels for inventory management, choosing between Polyethylene (PE) synthetic film and standard Thermal Transfer paper is a crucial decision...",
-    author: "Paras Printers Technical Team",
-    publishedAt: "2026-07-15",
-    readTime: "5 min read",
-    coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
-    tags: ["Barcode Labels", "Logistics", "PE Stickers"],
-    category: "Technical Guide",
-  },
-  {
-    id: "b-2",
-    title: "Pharmaceutical Label Compliance: GMP Standards & Serialization Requirements",
-    slug: "pharmaceutical-label-compliance-gmp-standards",
-    excerpt: "An in-depth guide on low-migration adhesives, anti-flagging mandrel testing, and tamper-evident features for medicine bottle packaging.",
-    content: "Pharmaceutical labeling demands 100% precision. Labels applied to small diameter glass vials or syrup bottles must conform to strict GMP guidelines...",
-    author: "Quality Assurance Department",
-    publishedAt: "2026-06-28",
-    readTime: "7 min read",
-    coverImage: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop",
-    tags: ["Pharma Labels", "Quality Assurance", "Compliance"],
-    category: "Industry Insights",
   },
 ];

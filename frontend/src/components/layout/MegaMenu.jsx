@@ -18,7 +18,7 @@ const ICON_MAP = {
 
 export const MegaMenu = ({ onClose }) => {
   return (
-    <div className="absolute top-full left-0 w-full bg-[var(--card)] border-b border-[var(--border)] shadow-2xl py-8 animate-fadeIn z-50">
+    <div className="absolute top-full left-0 w-full bg-[var(--card)] border-b border-[var(--border)] shadow-2xl py-8 animate-fadeIn z-50 before:content-[''] before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between pb-4 mb-6 border-b border-[var(--border)]">
           <div>

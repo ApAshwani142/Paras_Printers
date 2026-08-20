@@ -1,10 +1,11 @@
 import "./globals.css";
+import { Suspense } from "react";
 
-import { StickyHeader } from "@/components/layout/StickyHeader";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import { StructuredData } from "@/components/shared/StructuredData";
+import TransitionLoader from "@/components/shared/TransitionLoader";
 
 import { COMPANY_INFO } from "@/lib/data";
 
@@ -79,9 +80,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}) {
+export default function RootLayout({children}) {
   return (
     <html
       lang="en"
@@ -93,7 +92,9 @@ export default function RootLayout({
 
       <body className="min-h-screen flex flex-col antialiased">
         <AuthProvider>
-          <StickyHeader />
+          <Suspense fallback={null}>
+            <TransitionLoader />
+          </Suspense>
 
           <Navbar />
 

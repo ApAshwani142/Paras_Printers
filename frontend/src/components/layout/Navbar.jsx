@@ -108,7 +108,7 @@ export const Navbar = () => {
                 return (
                   <div
                     key={link.name}
-                    className="relative"
+                    className=""
                     onMouseEnter={() => setShowMegaMenu(true)}
                     onMouseLeave={() => setShowMegaMenu(false)}
                   >
@@ -188,9 +188,9 @@ export const Navbar = () => {
             </Button>
           </a>
 
-          {!authLoading && user && (
+          {!authLoading && user && !["/login", "/signup", "/verify-email", "/verify-mfa", "/forgot-password", "/reset-password"].includes(pathname) && (
             <Link
-              href="/account"
+              href="/accounts"
               className=" hidden lg:flex items-center gap-2 rounded-xl px-2.5 py-1.5 transition-colors hover:bg-[var(--muted)] "
             >
               {/* Avatar */}

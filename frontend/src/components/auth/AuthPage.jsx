@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import AuthBrandPanel from "./AuthBrandPanel";
 import AuthCard from "./AuthCard";
 
@@ -29,9 +30,17 @@ export default function AuthPage({ mode }) {
             xl:px-16
           "
         >
-          <AuthCard mode={mode} />
+          <Suspense
+            fallback={
+              <div className="flex w-full items-center justify-center p-8">
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-sky-500 border-t-transparent"></div>
+              </div>
+            }
+          >
+            <AuthCard mode={mode} />
+          </Suspense>
         </section>
       </div>
     </main>
   );
-}
+}

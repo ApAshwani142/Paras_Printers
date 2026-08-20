@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import {
   ArrowRight,
@@ -28,6 +29,9 @@ export default function AuthCard({
     login,
     signup,
   } = useAuth();
+
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "/";
 
   const [error, setError] =
     useState("");
@@ -68,14 +72,15 @@ export default function AuthCard({
               response.mfaToken
             );
 
+            window.dispatchEvent(new Event("routeTransitionStart"));
             window.location.href =
               "/verify-mfa";
 
             return;
           }
 
-          window.location.href =
-            "/";
+          window.dispatchEvent(new Event("routeTransitionStart"));
+          window.location.href = redirectTo;
         } else {
           await signup({
             name: String(
@@ -95,6 +100,7 @@ export default function AuthCard({
             ),
           });
 
+          window.dispatchEvent(new Event("routeTransitionStart"));
           window.location.href =
             "/verify-email";
         }

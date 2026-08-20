@@ -110,7 +110,6 @@ export const Footer = () => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--muted-foreground)] gap-4">
           <p>© {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved. North Guwahati, Assam, India.</p>
           <div className="flex items-center space-x-6">
-            <Link href="/faqs" className="hover:text-[var(--primary)]">FAQs</Link>
             <Link href="/request-quote" className="hover:text-[var(--primary)]">Instant Quote</Link>
             <Link href="/contact" className="hover:text-[var(--primary)]">Location Map</Link>
           </div>

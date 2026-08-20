@@ -77,7 +77,7 @@ export const HeroSection = () => {
             <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden border border-[var(--border)] bg-[var(--card)] shadow-2xl">
               <div className="relative h-72 sm:h-96 w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop"
+                  src="/images/printing_press.jpg"
                   alt="Paras Printers High Speed Flexographic Press"
                   fill
                   priority
