@@ -13,6 +13,15 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    const apiDest = process.env.NEXT_API_URL || "http://localhost:5000/api";
+    return [
+      {
+        source: "/api-proxy/:path*",
+        destination: `${apiDest}/:path*`,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

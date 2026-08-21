@@ -1,6 +1,7 @@
 const API_URL =
-  process.env.NEXT_API_URL ||
-  "http://localhost:5000/api";
+  typeof window === "undefined"
+    ? (process.env.NEXT_API_URL || "http://localhost:5000/api")
+    : "/api-proxy";
 
 let csrfToken = null;
 
