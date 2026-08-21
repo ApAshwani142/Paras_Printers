@@ -1,6 +1,6 @@
 import { doubleCsrf } from "csrf-csrf";
 
-const isProduction = process.env.NODE_ENV === "production";
+const isDevelopment = process.env.NODE_ENV === "development";
 
 const {
   doubleCsrfProtection,
@@ -17,16 +17,17 @@ const {
   },
 
   getSessionIdentifier: (req) => {
-    return req.ip;
+    // Return a constant to bypass volatile client/proxy IP changes behind reverse proxies
+    return "stateless";
   },
 
-  cookieName: isProduction
+  cookieName: isDevelopment
     ? "__Host-csrf"
     : "csrf-token",
 
   cookieOptions: {
     httpOnly: true,
-    secure: isProduction,
+    secure: isDevelopment,
     sameSite: "lax",
     path: "/",
   },
