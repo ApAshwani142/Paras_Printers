@@ -155,11 +155,16 @@ export async function signup(req, res, next) {
       expiresAt: new Date(Date.now() + EMAIL_VERIFICATION_EXPIRY),
     });
 
-    await sendVerificationEmail(
+    sendVerificationEmail(
       user.email,
       user.name,
       rawToken
-    );
+    ).catch((emailError) => {
+      console.error(
+        "Verification email failed:",
+        emailError.message
+      );
+    });
 
     await writeSecurityEvent({
       eventType: "signup",
@@ -346,18 +351,16 @@ export async function login(req, res, next) {
       req,
     });
 
-    try {
-      await sendLoginAlertEmail(
-        user.email,
-        user.name,
-        getRequestMetadata(req)
-      );
-    } catch (emailError) {
+    sendLoginAlertEmail(
+      user.email,
+      user.name,
+      getRequestMetadata(req)
+    ).catch((emailError) => {
       console.error(
         "Login notification email failed:",
         emailError.message
       );
-    }
+    });
 
     return res.json({
       success: true,
@@ -675,11 +678,16 @@ export async function forgotPassword(
       expiresAt: new Date(Date.now() + PASSWORD_RESET_EXPIRY),
     });
 
-    await sendPasswordResetEmail(
+    sendPasswordResetEmail(
       user.email,
       user.name,
       rawToken
-    );
+    ).catch((emailError) => {
+      console.error(
+        "Password reset email failed:",
+        emailError.message
+      );
+    });
 
     await writeSecurityEvent({
       eventType: "password_reset_requested",
@@ -793,17 +801,15 @@ export async function resetPassword(
       req,
     });
 
-    try {
-      await sendPasswordChangedEmail(
-        user.email,
-        user.name
-      );
-    } catch (emailError) {
+    sendPasswordChangedEmail(
+      user.email,
+      user.name
+    ).catch((emailError) => {
       console.error(
         "Password change email failed:",
         emailError.message
       );
-    }
+    });
 
     return res.json({
       success: true,
@@ -853,11 +859,16 @@ export async function resendVerificationEmail(
       expiresAt: new Date(Date.now() + EMAIL_VERIFICATION_EXPIRY),
     });
 
-    await sendVerificationEmail(
+    sendVerificationEmail(
       user.email,
       user.name,
       rawToken
-    );
+    ).catch((emailError) => {
+      console.error(
+        "Verification email failed:",
+        emailError.message
+      );
+    });
 
     return res.json(response);
   } catch (error) {
@@ -977,17 +988,15 @@ export async function changePassword(
       req,
     });
 
-    try {
-      await sendPasswordChangedEmail(
-        user.email,
-        user.name
-      );
-    } catch (emailError) {
+    sendPasswordChangedEmail(
+      user.email,
+      user.name
+    ).catch((emailError) => {
       console.error(
         "Password notification failed:",
         emailError.message
       );
-    }
+    });
 
     return res.json({
       success: true,
