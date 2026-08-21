@@ -1,75 +1,32 @@
 "use client";
 
-import {
-  useState,
-} from "react";
-
-import {
-  useSearchParams,
-  useRouter,
-} from "next/navigation";
-
+import {useState} from "react";
+import {useSearchParams, useRouter} from "next/navigation";
 import Link from "next/link";
-
-import {
-  Lock,
-} from "lucide-react";
-
-import {
-  resetPassword,
-} from "@/lib/auth";
+import {Lock} from "lucide-react";
+import {resetPassword} from "@/lib/auth";
 
 export default function ResetPasswordPage() {
-  const searchParams =
-    useSearchParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const token = searchParams.get("token");
 
-  const router =
-    useRouter();
-
-  const token =
-    searchParams.get("token");
-
-  const [
-    password,
-    setPassword,
-  ] = useState("");
-
-  const [
-    confirmPassword,
-    setConfirmPassword,
-  ] = useState("");
-
-  const [
-    loading,
-    setLoading,
-  ] = useState(false);
-
-  const [
-    message,
-    setMessage,
-  ] = useState("");
-
-  const [
-    error,
-    setError,
-  ] = useState("");
+  const [ password, setPassword] = useState("");
+  const [ confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!token) {
-      setError(
-        "Invalid or missing reset token."
-      );
+      setError("Invalid or missing reset token.");
       return;
     }
 
-    if (
-      password !== confirmPassword
-    ) {
-      setError(
-        "Passwords do not match."
-      );
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
       return;
     }
 
@@ -84,9 +41,7 @@ export default function ResetPasswordPage() {
           confirmPassword
         );
 
-      setMessage(
-        response.message
-      );
+      setMessage(response.message);
 
       setTimeout(() => {
         router.push("/login");
@@ -132,10 +87,7 @@ export default function ResetPasswordPage() {
           </div>
         )}
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-5"
-        >
+        <form onSubmit={handleSubmit} className="space-y-5" >
           <div>
             <label className="mb-2 block text-sm font-semibold">
               New Password
@@ -153,9 +105,7 @@ export default function ResetPasswordPage() {
                 minLength={8}
                 maxLength={72}
                 value={password}
-                onChange={(e) =>
-                  setPassword(e.target.value)
-                }
+                onChange={(e) => setPassword(e.target.value)}
                 className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 dark:border-slate-800 dark:bg-slate-900"
               />
             </div>
@@ -172,11 +122,7 @@ export default function ResetPasswordPage() {
               minLength={8}
               maxLength={72}
               value={confirmPassword}
-              onChange={(e) =>
-                setConfirmPassword(
-                  e.target.value
-                )
-              }
+              onChange={(e) => setConfirmPassword(e.target.value)}
               className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 dark:border-slate-800 dark:bg-slate-900"
             />
           </div>
@@ -192,10 +138,7 @@ export default function ResetPasswordPage() {
           </button>
         </form>
 
-        <Link
-          href="/login"
-          className="mt-6 block text-center text-sm font-semibold text-sky-500"
-        >
+        <Link href="/login" className="mt-6 block text-center text-sm font-semibold text-sky-500" >
           Back to login
         </Link>
 

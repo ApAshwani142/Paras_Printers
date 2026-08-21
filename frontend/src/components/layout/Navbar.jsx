@@ -10,13 +10,7 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { MegaMenu } from "./MegaMenu";
 import { MobileNav } from "./MobileNav";
 
-import {
-  ChevronDown,
-  Menu,
-  Printer,
-  MessageSquareText,
-  FileText,
-} from "lucide-react";
+import { ChevronDown, Menu, Printer, MessageSquareText, FileText} from "lucide-react";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -61,43 +55,30 @@ export const Navbar = () => {
   };
 
   return (
-    <header
-      className=" sticky top-0 z-50 w-full bg-[var(--card)] border-b border-[var(--border)] shadow-sm"
-    >
+    <header className=" sticky top-0 z-50 w-full bg-[var(--card)] border-b border-[var(--border)] shadow-sm" >
       <div
         className={`w-full mx-auto flex items-center ${isScrolled ? "py-2" : "py-2.5"
           } px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12`}
       >
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 shrink-0 group"
-        >
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 group" >
           {/* Logo Icon */}
-          <div
-            className=" w-10 h-10 rounded-xl bg-[var(--primary)] text-white flex items-center justify-center shadow-md group-hover:scale-105 "
-          >
+          <div className=" w-10 h-10 rounded-xl bg-[var(--primary)] text-white flex items-center justify-center shadow-md group-hover:scale-105 " >
             <Printer className="w-5 h-5" />
           </div>
 
           {/* Brand Text */}
           <div className="flex flex-col leading-none">
-            <span
-              className=" text-[17px] sm:text-[18px] font-black tracking-tight text-[var(--foreground)] whitespace-nowrap "
-            >
+            <span className=" text-[17px] sm:text-[18px] font-black tracking-tight text-[var(--foreground)] whitespace-nowrap " >
               PARAS PRINTERS
             </span>
 
-            <span
-              className="mt-1 text-[9px] sm:text-[10px] font-semibold tracking-[0.16em] uppercase text-[var(--muted-foreground)] whitespace-nowrap "
-            >
+            <span className="mt-1 text-[9px] sm:text-[10px] font-semibold tracking-[0.16em] uppercase text-[var(--muted-foreground)] whitespace-nowrap " >
               Packaging & Labels
             </span>
           </div>
         </Link>
 
-        <nav
-          className=" hidden lg:flex flex-1 items-center justify-center mx-6 xl:mx-10 "
-        >
+        <nav className=" hidden lg:flex flex-1 items-center justify-center mx-6 xl:mx-10 " >
           <div className="flex items-center gap-1">
             {navLinks.map((link) => {
               const isActive =
@@ -135,9 +116,7 @@ export const Navbar = () => {
                     </Link>
 
                     {showMegaMenu && (
-                      <MegaMenu
-                        onClose={() => setShowMegaMenu(false)}
-                      />
+                      <MegaMenu onClose={() => setShowMegaMenu(false)} />
                     )}
                   </div>
                 );
@@ -162,9 +141,7 @@ export const Navbar = () => {
           </div>
         </nav>
 
-        <div
-          className=" flex items-center justify-end gap-2 sm:gap-2.5 shrink-0 "
-        >
+        <div className=" flex items-center justify-end gap-2 sm:gap-2.5 shrink-0 " >
           {/* Theme */}
           <div className="shrink-0">
             <ThemeToggle />
@@ -189,20 +166,11 @@ export const Navbar = () => {
           </a>
 
           {!authLoading && user && !["/login", "/signup", "/verify-email", "/verify-mfa", "/forgot-password", "/reset-password"].includes(pathname) && (
-            <Link
-              href="/accounts"
-              className=" hidden lg:flex items-center gap-2 rounded-xl px-2.5 py-1.5 transition-colors hover:bg-[var(--muted)] "
-            >
+            <Link href="/accounts" className=" hidden lg:flex items-center gap-2 rounded-xl px-2.5 py-1.5 transition-colors hover:bg-[var(--muted)] " >
               {/* Avatar */}
-              <div
-                className=" flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[var(--primary)] text-sm font-bold text-white "
-              >
+              <div className=" flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[var(--primary)] text-sm font-bold text-white " >
                 {user.avatar ? (
-                  <img
-                    src={user.avatar}
-                    alt={user.name}
-                    className="h-full w-full object-cover"
-                  />
+                  <img src={user.avatar} alt={user.name} className="h-full w-full object-cover" />
                 ) : (
                     getInitials(user.name) || "U"
                   )}
@@ -210,15 +178,11 @@ export const Navbar = () => {
 
               {/* User name */}
               <div className="flex max-w-[130px] flex-col leading-tight">
-                <span
-                  className=" truncate text-[13px] font-bold text-[var(--foreground)] "
-                >
+                <span className=" truncate text-[13px] font-bold text-[var(--foreground)] " >
                   {user.name}
                 </span>
 
-                <span
-                  className=" text-[10px] text-[var(--muted-foreground)] "
-                >
+                <span className=" text-[10px] text-[var(--muted-foreground)] " >
                   My Account
                 </span>
               </div>
@@ -228,27 +192,15 @@ export const Navbar = () => {
           {!authLoading && !user && (
             <>
               {/* Login */}
-              <Link
-                href="/login"
-                className="hidden lg:inline-flex shrink-0"
-              >
-                <Button
-                  variant="outline"
-                  size="sm"
-                >
+              <Link href="/login" className="hidden lg:inline-flex shrink-0" >
+                <Button variant="outline" size="sm" >
                   Login
                 </Button>
               </Link>
 
               {/* Sign Up */}
-              <Link
-                href="/signup"
-                className="hidden lg:inline-flex shrink-0"
-              >
-                <Button
-                  variant="primary"
-                  size="sm"
-                >
+              <Link href="/signup" className="hidden lg:inline-flex shrink-0" >
+                <Button variant="primary" size="sm" >
                   Sign Up
                 </Button>
               </Link>
@@ -257,11 +209,7 @@ export const Navbar = () => {
 
           {/* Get Quote */}
           <Link href="/request-quote" className="shrink-0">
-            <Button
-              variant="primary"
-              size="sm"
-              leftIcon={<FileText className="w-4 h-4" />}
-            >
+            <Button variant="primary" size="sm" leftIcon={<FileText className="w-4 h-4" />} >
               <span className="hidden sm:inline">
                 Get Quote
               </span>
@@ -286,10 +234,7 @@ export const Navbar = () => {
       </div>
 
       {showMobileNav && (
-        <MobileNav
-          links={navLinks}
-          onClose={() => setShowMobileNav(false)}
-        />
+        <MobileNav links={navLinks} onClose={() => setShowMobileNav(false)} />
       )}
     </header>
   );

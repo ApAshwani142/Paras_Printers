@@ -1,33 +1,15 @@
 "use client";
 
-import {
-  useEffect,
-  useState,
-} from "react";
-
-import {
-  useSearchParams,
-} from "next/navigation";
-
+import {useEffect, useState} from "react";
+import {useSearchParams} from "next/navigation";
 import Link from "next/link";
-
-import {
-  CheckCircle2,
-  XCircle,
-  MailCheck
-} from "lucide-react";
-
-import {
-  verifyEmail,
-} from "@/lib/auth";
+import {CheckCircle2, XCircle, MailCheck} from "lucide-react";
+import {verifyEmail} from "@/lib/auth";
 
 export default function VerifyEmailPage() {
   const searchParams = useSearchParams();
-
   const token = searchParams.get("token");
-
   const [ status, setStatus ] = useState(token ? "loading" : "pending");
-
   const [ message, setMessage ] = useState("");
 
   useEffect(() => {
@@ -62,10 +44,7 @@ export default function VerifyEmailPage() {
         {/* Waiting for email */}
         {status === "pending" && (
           <>
-            <MailCheck
-              size={52}
-              className="mx-auto mb-5 text-sky-500"
-            />
+            <MailCheck size={52} className="mx-auto mb-5 text-sky-500" />
 
             <h1 className="text-2xl font-black">
               Check your email
@@ -85,10 +64,7 @@ export default function VerifyEmailPage() {
               to activate your account.
             </p>
 
-            <Link
-              href="/login"
-              className="mt-6 inline-flex h-11 items-center rounded-xl bg-sky-500 px-6 text-sm font-bold text-white"
-            >
+            <Link href="/login" className="mt-6 inline-flex h-11 items-center rounded-xl bg-sky-500 px-6 text-sm font-bold text-white" >
               Back to Login
             </Link>
           </>
@@ -113,10 +89,7 @@ export default function VerifyEmailPage() {
         {/* Successful verification */}
         {status === "success" && (
           <>
-            <CheckCircle2
-              size={52}
-              className="mx-auto mb-5 text-emerald-500"
-            />
+            <CheckCircle2 size={52} className="mx-auto mb-5 text-emerald-500" />
 
             <h1 className="text-2xl font-black">
               Email verified successfully
@@ -126,10 +99,7 @@ export default function VerifyEmailPage() {
               {message}
             </p>
 
-            <Link
-              href="/login"
-              className="mt-6 inline-flex h-11 items-center rounded-xl bg-sky-500 px-6 text-sm font-bold text-white"
-            >
+            <Link href="/login" className="mt-6 inline-flex h-11 items-center rounded-xl bg-sky-500 px-6 text-sm font-bold text-white" >
               Continue to Login
             </Link>
           </>
@@ -138,10 +108,7 @@ export default function VerifyEmailPage() {
         {/* Verification failed */}
         {status === "error" && (
           <>
-            <XCircle
-              size={52}
-              className="mx-auto mb-5 text-red-500"
-            />
+            <XCircle size={52} className="mx-auto mb-5 text-red-500" />
 
             <h1 className="text-2xl font-black">
               Verification failed
@@ -151,10 +118,7 @@ export default function VerifyEmailPage() {
               {message}
             </p>
 
-            <Link
-              href="/login"
-              className="mt-6 inline-flex h-11 items-center rounded-xl bg-sky-500 px-6 text-sm font-bold text-white"
-            >
+            <Link href="/login" className="mt-6 inline-flex h-11 items-center rounded-xl bg-sky-500 px-6 text-sm font-bold text-white" >
               Back to Login
             </Link>
           </>

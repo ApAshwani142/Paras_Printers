@@ -14,16 +14,9 @@ export const QuoteForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit, reset, formState: { errors }} = useForm({
     resolver: zodResolver(quoteSchema),
-    defaultValues: {
-      quantity: 1000,
-    },
+    defaultValues: { quantity: 1000},
   });
 
   const onSubmit = async (data) => {
@@ -156,14 +149,7 @@ export const QuoteForm = () => {
         />
       </div>
 
-      <Button
-        type="submit"
-        variant="primary"
-        size="lg"
-        isLoading={loading}
-        className="w-full"
-        rightIcon={<Send className="w-4 h-4" />}
-      >
+      <Button type="submit" variant="primary" size="lg" isLoading={loading} className="w-full" rightIcon={<Send className="w-4 h-4" />} >
         Request Custom Price Quote
       </Button>
     </form>

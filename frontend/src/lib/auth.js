@@ -27,9 +27,7 @@ export async function getMe() {
 export async function forgotPassword(email) {
   return apiRequest("/auth/forgot-password", {
     method: "POST",
-    body: JSON.stringify({
-      email,
-    }),
+    body: JSON.stringify({email}),
   });
 }
 
@@ -50,9 +48,7 @@ export async function resetPassword(
 
 export async function verifyEmail(token) {
   return apiRequest(
-    `/auth/verify-email?token=${encodeURIComponent(
-      token
-    )}`
+    `/auth/verify-email?token=${encodeURIComponent(token)}`
   );
 }
 
@@ -61,9 +57,7 @@ export async function resendVerification(email) {
     "/auth/resend-verification",
     {
       method: "POST",
-      body: JSON.stringify({
-        email,
-      }),
+      body: JSON.stringify({email}),
     }
   );
 }
@@ -76,10 +70,7 @@ export async function verifyMfa(
     "/auth/verify-mfa",
     {
       method: "POST",
-      body: JSON.stringify({
-        mfaToken,
-        code,
-      }),
+      body: JSON.stringify({ mfaToken, code}),
     }
   );
 }
@@ -92,10 +83,7 @@ export async function verifyMfaRecovery(
     "/auth/verify-mfa-recovery",
     {
       method: "POST",
-      body: JSON.stringify({
-        mfaToken,
-        recoveryCode,
-      }),
+      body: JSON.stringify({mfaToken, recoveryCode}),
     }
   );
 }
@@ -109,11 +97,7 @@ export async function changePassword(
     "/auth/change-password",
     {
       method: "POST",
-      body: JSON.stringify({
-        currentPassword,
-        newPassword,
-        confirmPassword,
-      }),
+      body: JSON.stringify({currentPassword, newPassword, confirmPassword,}),
     }
   );
 }

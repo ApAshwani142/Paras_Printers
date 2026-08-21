@@ -19,22 +19,15 @@ export const Button = React.forwardRef(
     },
     ref
   ) => {
-    const baseStyles =
-      "inline-flex items-center justify-center font-semibold transition-[transform,opacity] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.98]";
+    const baseStyles = "inline-flex items-center justify-center font-semibold transition-[transform,opacity] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.98]";
 
     const variants = {
-      primary:
-        "bg-[var(--primary)] text-[var(--primary-foreground)] hover:bg-[var(--primary-hover)] shadow-sm focus-visible:ring-[var(--ring)]",
-      secondary:
-        "bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90 shadow-sm",
-      outline:
-        "border border-[var(--border)] bg-transparent text-[var(--foreground)] hover:bg-[var(--muted)]",
-      ghost:
-        "bg-transparent text-[var(--foreground)] hover:bg-[var(--muted)]",
-      destructive:
-        "bg-[var(--destructive)] text-[var(--destructive-foreground)] hover:opacity-90",
-      accent:
-        "bg-[var(--accent)] text-[var(--accent-foreground)] hover:opacity-90 border border-sky-400/30",
+      primary: "bg-[var(--primary)] text-[var(--primary-foreground)] hover:bg-[var(--primary-hover)] shadow-sm focus-visible:ring-[var(--ring)]",
+      secondary: "bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90 shadow-sm",
+      outline: "border border-[var(--border)] bg-transparent text-[var(--foreground)] hover:bg-[var(--muted)]",
+      ghost: "bg-transparent text-[var(--foreground)] hover:bg-[var(--muted)]",
+      destructive: "bg-[var(--destructive)] text-[var(--destructive-foreground)] hover:opacity-90",
+      accent: "bg-[var(--accent)] text-[var(--accent-foreground)] hover:opacity-90 border border-sky-400/30",
     };
 
     const sizes = {

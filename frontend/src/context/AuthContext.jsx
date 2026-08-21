@@ -1,28 +1,14 @@
 "use client";
 
-import {
-    createContext,
-    useContext,
-    useEffect,
-    useState,
-} from "react";
-
-import {
-    getMe,
-    login as loginRequest,
-    signup as signupRequest,
-    logout as logoutRequest,
-} from "@/lib/auth";
+import { createContext, useContext, useEffect, useState} from "react";
+import { getMe, login as loginRequest, signup as signupRequest, logout as logoutRequest} from "@/lib/auth";
 
 const AuthContext = createContext(undefined);
 
-export function AuthProvider({
-    children,
-}) {
+export function AuthProvider({children}) {
     const [user, setUser] = useState(null);
-
     const [loading, setLoading] = useState(true);
-
+    
     const refreshUser = async () => {
         try {
             const response = await getMe();

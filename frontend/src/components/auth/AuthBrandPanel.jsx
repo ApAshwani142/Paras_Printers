@@ -1,11 +1,4 @@
-import {
-  Barcode,
-  CheckCircle2,
-  Factory,
-  PackageCheck,
-  ShieldCheck,
-  Zap,
-} from "lucide-react";
+import { Barcode, CheckCircle2, Factory, PackageCheck, ShieldCheck, Zap} from "lucide-react";
 
 export default function AuthBrandPanel() {
   return (
@@ -61,53 +54,24 @@ export default function AuthBrandPanel() {
         </h2>
 
         {/* Description */}
-        <p
-          className=" mt-6 max-w-lg text-base leading-7 text-[var(--muted-foreground)] " >
-          Create your Paras Printers account to explore products, place
-          orders, request custom labels, and keep track of your purchases
-          from one convenient place.
+        <p className=" mt-6 max-w-lg text-base leading-7 text-[var(--muted-foreground)] " >
+          Create your Paras Printers account to explore products, place orders, request custom labels, and keep track of your purchases from one convenient place.
         </p>
 
         {/* Features */}
         <div className="mt-9 grid grid-cols-2 gap-x-8 gap-y-5">
-          <Feature
-            icon={Barcode}
-            text="High-Quality Labels"
-          />
-
-          <Feature
-            icon={Zap}
-            text="Fast Production"
-          />
-
-          <Feature
-            icon={PackageCheck}
-            text="Custom Packaging"
-          />
-
-          <Feature
-            icon={CheckCircle2}
-            text="Reliable Delivery"
-          />
+          <Feature icon={Barcode} text="High-Quality Labels" />
+          <Feature icon={Zap} text="Fast Production" />
+          <Feature icon={PackageCheck} text="Custom Packaging" />
+          <Feature icon={CheckCircle2} text="Reliable Delivery" />
         </div>
       </div>
 
       {/* Bottom stats */}
       <div className=" relative z-10 grid grid-cols-3 gap-4 border-t border-[var(--border)] pt-6 " >
-        <Stat
-          value="10+"
-          label="Years Experience"
-        />
-
-        <Stat
-          value="150K+"
-          label="Labels / Day"
-        />
-
-        <Stat
-          value="Pan-India"
-          label="Delivery"
-        />
+        <Stat value="10+" label="Years Experience" />
+        <Stat value="150K+" label="Labels / Day" />
+        <Stat value="Pan-India" label="Delivery" />
       </div>
     </section>
   );

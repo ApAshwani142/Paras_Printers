@@ -4,13 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-import {
-  ArrowRight,
-  Building2,
-  Mail,
-  Phone,
-  User,
-} from "lucide-react";
+import { ArrowRight, Building2, Mail, Phone, User} from "lucide-react";
 
 import AuthInput from "./AuthInput";
 import PasswordInput from "./PasswordInput";
@@ -22,22 +16,13 @@ import { useAuth } from "@/context/AuthContext";
 export default function AuthCard({
   mode,
 }) {
-  const isLogin =
-    mode === "login";
+  const isLogin = mode === "login";
 
-  const {
-    login,
-    signup,
-  } = useAuth();
-
+  const {login, signup} = useAuth();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/";
-
-  const [error, setError] =
-    useState("");
-
-  const [loading, setLoading] =
-    useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit =
     async (event) => {
@@ -46,36 +31,21 @@ export default function AuthCard({
       setError("");
       setLoading(true);
 
-      const form =
-        new FormData(
-          event.currentTarget
-        );
+      const form = new FormData(event.currentTarget);
 
       try {
         if (isLogin) {
           const response =
             await login({
-              email: String(
-                form.get("email")
-              ),
-
-              password: String(
-                form.get("password")
-              ),
+              email: String(form.get("email")),
+              password: String(form.get("password")),
             });
 
-          if (
-            response.requiresMfa
-          ) {
-            sessionStorage.setItem(
-              "mfaToken",
-              response.mfaToken
-            );
+          if (response.requiresMfa) {
+            sessionStorage.setItem("mfaToken", response.mfaToken);
 
             window.dispatchEvent(new Event("routeTransitionStart"));
-            window.location.href =
-              "/verify-mfa";
-
+            window.location.href = "/verify-mfa";
             return;
           }
 
@@ -83,26 +53,14 @@ export default function AuthCard({
           window.location.href = redirectTo;
         } else {
           await signup({
-            name: String(
-              form.get("name")
-            ),
-
-            email: String(
-              form.get("email")
-            ),
-
-            phone: String(
-              form.get("phone") || ""
-            ),
-
-            password: String(
-              form.get("password")
-            ),
+            name: String(form.get("name")),
+            email: String(form.get("email")),
+            phone: String(form.get("phone") || "" ),
+            password: String(form.get("password")),
           });
 
           window.dispatchEvent(new Event("routeTransitionStart"));
-          window.location.href =
-            "/verify-email";
+          window.location.href = "/verify-email";
         }
       } catch (err) {
         setError(
@@ -222,10 +180,7 @@ export default function AuthCard({
               </span>
             </label>
 
-            <Link
-              href="/forgot-password"
-              className="text-xs font-semibold text-sky-600 dark:text-sky-400"
-            >
+            <Link href="/forgot-password" className="text-xs font-semibold text-sky-600 dark:text-sky-400" >
               Forgot password?
             </Link>
           </div>
@@ -233,28 +188,18 @@ export default function AuthCard({
 
         {!isLogin && (
           <label className="flex items-start gap-2">
-            <input
-              type="checkbox"
-              required
-              className="mt-0.5 h-4 w-4 accent-sky-500"
-            />
+            <input type="checkbox" required className="mt-0.5 h-4 w-4 accent-sky-500" />
 
             <span className="text-xs leading-5 text-slate-500 dark:text-slate-400">
               I agree to the{" "}
 
-              <Link
-                href="/terms"
-                className="font-semibold text-sky-600 dark:text-sky-400"
-              >
+              <Link href="/terms" className="font-semibold text-sky-600 dark:text-sky-400" >
                 Terms
               </Link>{" "}
 
               and{" "}
 
-              <Link
-                href="/privacy"
-                className="font-semibold text-sky-600 dark:text-sky-400"
-              >
+              <Link href="/privacy" className="font-semibold text-sky-600 dark:text-sky-400" >
                 Privacy Policy
               </Link>
               .

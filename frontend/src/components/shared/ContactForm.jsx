@@ -13,12 +13,7 @@ export const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit, reset, formState: { errors }} = useForm({
     resolver: zodResolver(contactSchema),
   });
 
@@ -97,14 +92,7 @@ export const ContactForm = () => {
         {...register("message")}
       />
 
-      <Button
-        type="submit"
-        variant="primary"
-        size="lg"
-        isLoading={loading}
-        className="w-full sm:w-auto"
-        rightIcon={<Send className="w-4 h-4" />}
-      >
+      <Button type="submit" variant="primary" size="lg" isLoading={loading} className="w-full sm:w-auto" rightIcon={<Send className="w-4 h-4" />} >
         Submit Contact Inquiry
       </Button>
     </form>

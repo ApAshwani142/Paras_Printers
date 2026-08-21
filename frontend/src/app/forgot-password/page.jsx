@@ -1,42 +1,16 @@
 "use client";
 
-import {
-  useState,
-} from "react";
-
+import {useState} from "react";
 import Link from "next/link";
-
-import {
-  ArrowLeft,
-  Mail,
-} from "lucide-react";
-
+import {ArrowLeft, Mail} from "lucide-react";
 import AuthBrandPanel from "@/components/auth/AuthBrandPanel";
-
-import {
-  forgotPassword,
-} from "@/lib/auth";
+import {forgotPassword} from "@/lib/auth";
 
 export default function ForgotPasswordPage() {
-  const [
-    email,
-    setEmail,
-  ] = useState("");
-
-  const [
-    loading,
-    setLoading,
-  ] = useState(false);
-
-  const [
-    message,
-    setMessage,
-  ] = useState("");
-
-  const [
-    error,
-    setError,
-  ] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,12 +20,8 @@ export default function ForgotPasswordPage() {
     setMessage("");
 
     try {
-      const response =
-        await forgotPassword(email);
-
-      setMessage(
-        response.message
-      );
+      const response = await forgotPassword(email);
+      setMessage(response.message);
     } catch (err) {
       setError(
         err instanceof Error
@@ -105,20 +75,14 @@ export default function ForgotPasswordPage() {
               </div>
             )}
 
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-5"
-            >
+            <form onSubmit={handleSubmit} className="space-y-5" >
               <div>
                 <label className="mb-2 block text-sm font-semibold">
                   Email Address
                 </label>
 
                 <div className="relative">
-                  <Mail
-                    size={18}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
-                  />
+                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
 
                   <input
                     type="email"

@@ -12,9 +12,9 @@ import { COMPANY_INFO } from "@/lib/data";
 import { ShieldCheck, CheckCircle2 } from "lucide-react";
 
 // Sub-components
-import ProductGallery from "./components/ProductGallery";
-import CompanyAlbum from "./components/CompanyAlbum";
-import TestimonialSection from "./components/TestimonialSection";
+import ProductGallery from "../../components/about/ProductGallery";
+import CompanyAlbum from "../../components/about/CompanyAlbum";
+import TestimonialSection from "../../components/about/TestimonialSection";
 
 export default function AboutPageClient() {
   return (

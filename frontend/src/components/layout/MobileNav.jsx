@@ -63,14 +63,8 @@ export const MobileNav = ({ links, onClose }) => {
                     {/* Avatar */}
                     <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[var(--primary)] text-sm font-bold text-white">
                       {user.avatar ? (
-                        <img
-                          src={user.avatar}
-                          alt={user.name}
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        getInitials(user.name) || "U"
-                      )}
+                        <img src={user.avatar} alt={user.name} className="h-full w-full object-cover" />
+                      ) : (getInitials(user.name) || "U")}
                     </div>
                     {/* User Details */}
                     <div className="flex flex-col leading-tight min-w-0">

@@ -8,10 +8,10 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/Button";
 
 // Sub-components
-import AccountSidebar from "./components/AccountSidebar";
-import ProfileOverview from "./components/ProfileOverview";
-import SecuritySettings from "./components/SecuritySettings";
-import ActivityHistory from "./components/ActivityHistory";
+import AccountSidebar from "../../components/accounts/AccountSidebar";
+import ProfileOverview from "../../components/accounts/ProfileOverview";
+import SecuritySettings from "../../components/accounts/SecuritySettings";
+import ActivityHistory from "../../components/accounts/ActivityHistory";
 
 export default function AccountPage() {
   const { user, loading, logout } = useAuth();

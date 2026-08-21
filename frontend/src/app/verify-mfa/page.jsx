@@ -1,59 +1,23 @@
 "use client";
 
-import {
-  useEffect,
-  useState,
-} from "react";
-
-import {
-  useRouter,
-} from "next/navigation";
-
+import {useEffect, useState} from "react";
+import {useRouter} from "next/navigation";
 import Link from "next/link";
-
-import {
-  ShieldCheck,
-} from "lucide-react";
-
-import {
-  verifyMfa,
-  verifyMfaRecovery,
-} from "@/lib/auth";
+import {ShieldCheck} from "lucide-react";
+import { verifyMfa, verifyMfaRecovery} from "@/lib/auth";
 
 export default function VerifyMfaPage() {
-  const router =
-    useRouter();
+  const router = useRouter();
 
-  const [
-    mfaToken,
-    setMfaToken,
-  ] = useState(null);
-
-  const [
-    code,
-    setCode,
-  ] = useState("");
-
-  const [
-    recoveryMode,
-    setRecoveryMode,
-  ] = useState(false);
-
-  const [
-    loading,
-    setLoading,
-  ] = useState(false);
-
-  const [
-    error,
-    setError,
-  ] = useState("");
+  const [ mfaToken, setMfaToken] = useState(null);
+  const [code, setCode] = useState("");
+  const [recoveryMode, setRecoveryMode] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const token =
-      sessionStorage.getItem(
-        "mfaToken"
-      );
+      sessionStorage.getItem("mfaToken");
 
     if (!token) {
       router.replace("/login");
@@ -75,20 +39,12 @@ export default function VerifyMfaPage() {
 
     try {
       if (recoveryMode) {
-        await verifyMfaRecovery(
-          mfaToken,
-          code
-        );
+        await verifyMfaRecovery(mfaToken, code);
       } else {
-        await verifyMfa(
-          mfaToken,
-          code
-        );
+        await verifyMfa(mfaToken, code);
       }
 
-      sessionStorage.removeItem(
-        "mfaToken"
-      );
+      sessionStorage.removeItem("mfaToken");
 
       router.replace("/");
     } catch (err) {
@@ -109,9 +65,7 @@ export default function VerifyMfaPage() {
         <div className="mb-8 text-center">
 
           <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-500 text-white">
-            <ShieldCheck
-              size={28}
-            />
+            <ShieldCheck size={28} />
           </div>
 
           <h1 className="text-3xl font-black">
@@ -134,15 +88,10 @@ export default function VerifyMfaPage() {
           </div>
         )}
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-5"
-        >
+        <form onSubmit={handleSubmit} className="space-y-5" >
           <input
             value={code}
-            onChange={(e) =>
-              setCode(e.target.value)
-            }
+            onChange={(e) => setCode(e.target.value)}
             required
             autoFocus
             inputMode={
@@ -177,9 +126,7 @@ export default function VerifyMfaPage() {
         <button
           type="button"
           onClick={() => {
-            setRecoveryMode(
-              !recoveryMode
-            );
+            setRecoveryMode(!recoveryMode);
             setCode("");
             setError("");
           }}
@@ -190,10 +137,7 @@ export default function VerifyMfaPage() {
             : "Use recovery code"}
         </button>
 
-        <Link
-          href="/login"
-          className="mt-4 block text-center text-xs text-slate-500"
-        >
+        <Link href="/login" className="mt-4 block text-center text-xs text-slate-500" >
           Back to login
         </Link>
 

@@ -13,29 +13,12 @@ export default function PasswordInput({
 
   return (
     <div className="space-y-2">
-      <label
-        htmlFor={name}
-        className="
-          block
-          text-sm
-          font-semibold
-          text-[var(--foreground)]
-        "
-      >
+      <label htmlFor={name} className=" block text-sm font-semibold text-[var(--foreground)]" >
         {label}
       </label>
 
       <div className="relative">
-        <LockKeyhole
-          size={18}
-          className="
-            absolute
-            left-4
-            top-1/2
-            -translate-y-1/2
-            text-[var(--muted-foreground)]
-          "
-        />
+        <LockKeyhole size={18} className=" absolute left-4 top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]" />
 
         <input
           id={name}
@@ -68,26 +51,13 @@ export default function PasswordInput({
 
         <button
           type="button"
-          onClick={() =>
-            setShowPassword((prev) => !prev)
-          }
+          onClick={() => setShowPassword((prev) => !prev)}
           aria-label={
             showPassword
               ? "Hide password"
               : "Show password"
           }
-          className="
-            absolute
-            right-3
-            top-1/2
-            -translate-y-1/2
-            rounded-lg
-            p-2
-            text-[var(--muted-foreground)]
-            hover:bg-[var(--muted)]
-            hover:text-[var(--foreground)]
-          "
-        >
+          className=" absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-2 text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)]" >
           {showPassword ? (
             <EyeOff size={18} />
           ) : (

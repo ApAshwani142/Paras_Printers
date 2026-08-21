@@ -1,5 +1,5 @@
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
+  process.env.NEXT_API_URL ||
   "http://localhost:5000/api";
 
 let csrfToken = null;
@@ -14,18 +14,13 @@ export async function getCsrfToken() {
     }
   );
 
-  const data =
-    await response.json();
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(
-      data.message ||
-        "Unable to initialize security session."
-    );
+    throw new Error( data.message || "Unable to initialize security session." );
   }
 
-  csrfToken =
-    data.csrfToken;
+  csrfToken = data.csrfToken;
 
   return csrfToken;
 }
@@ -42,9 +37,7 @@ export async function apiRequest(
   endpoint,
   options = {}
 ) {
-  const method =
-    options.method?.toUpperCase() ||
-    "GET";
+  const method = options.method?.toUpperCase() || "GET";
 
   const stateChangingMethods = [
     "POST",
@@ -53,38 +46,19 @@ export async function apiRequest(
     "DELETE",
   ];
 
-  const headers = new Headers(
-    options.headers
-  );
+  const headers = new Headers(options.headers);
 
-  if (
-    options.body &&
-    !headers.has(
-      "Content-Type"
-    )
-  ) {
-    headers.set(
-      "Content-Type",
-      "application/json"
-    );
+  if ( options.body && !headers.has("Content-Type") ) {
+    headers.set( "Content-Type", "application/json" );
   }
 
-  if (
-    stateChangingMethods.includes(
-      method
-    )
-  ) {
-    const token =
-      await ensureCsrfToken();
+  if (stateChangingMethods.includes(method)) {
+    const token = await ensureCsrfToken();
 
-    headers.set(
-      "X-CSRF-Token",
-      token
-    );
+    headers.set( "X-CSRF-Token", token);
   }
 
-  const response =
-    await fetch(
+  const response = await fetch(
       `${API_URL}${endpoint}`,
       {
         ...options,
@@ -93,14 +67,10 @@ export async function apiRequest(
       }
     );
 
-  const data =
-    await response.json();
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(
-      data.message ||
-        "Something went wrong."
-    );
+    throw new Error( data.message || "Something went wrong." );
   }
 
   return data;

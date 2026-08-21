@@ -17,10 +17,7 @@ export const Accordion = ({ items, defaultOpenId, className }) => {
         const isOpen = openId === item.id;
 
         return (
-          <div
-            key={item.id}
-            className="border border-[var(--border)] rounded-xl bg-[var(--card)] overflow-hidden"
-          >
+          <div key={item.id} className="border border-[var(--border)] rounded-xl bg-[var(--card)] overflow-hidden" >
             <button
               onClick={() => toggle(item.id)}
               className="w-full px-5 py-4 text-left flex items-center justify-between font-semibold text-sm sm:text-base text-[var(--foreground)] hover:bg-[var(--muted)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"

@@ -44,11 +44,9 @@ export const metadata = {
 
     title: `${COMPANY_INFO.name} | Premium B2B Label Manufacturer`,
 
-    description:
-      COMPANY_INFO.tagline,
+    description: COMPANY_INFO.tagline,
 
-    siteName:
-      COMPANY_INFO.name,
+    siteName: COMPANY_INFO.name,
 
     images: [
       {
@@ -63,11 +61,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title:
-      COMPANY_INFO.name,
+    title: COMPANY_INFO.name,
 
-    description:
-      COMPANY_INFO.tagline,
+    description: COMPANY_INFO.tagline,
 
     images: [
       "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1200",
@@ -82,10 +78,7 @@ export const metadata = {
 
 export default function RootLayout({children}) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning >
       <head>
         <StructuredData />
       </head>

@@ -9,30 +9,13 @@ export default function AuthInput({
 }) {
   return (
     <div className="space-y-2">
-      <label
-        htmlFor={name}
-        className="
-          block
-          text-sm
-          font-semibold
-          text-[var(--foreground)]
-        "
-      >
+      <label htmlFor={name} className=" block text-sm font-semibold text-[var(--foreground)]" >
         {label}
       </label>
 
       <div className="relative">
         {Icon && (
-          <Icon
-            size={18}
-            className="
-              absolute
-              left-4
-              top-1/2
-              -translate-y-1/2
-              text-[var(--muted-foreground)]
-            "
-          />
+          <Icon size={18} className=" absolute left-4 top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]" />
         )}
 
         <input
