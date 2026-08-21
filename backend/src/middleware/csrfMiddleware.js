@@ -27,8 +27,8 @@ const {
 
   cookieOptions: {
     httpOnly: true,
-    secure: isDevelopment,
-    sameSite: "lax",
+    secure: true,
+    sameSite: isDevelopment ? "lax" : "none",
     path: "/",
   },
 

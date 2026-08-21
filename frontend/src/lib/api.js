@@ -1,7 +1,7 @@
 const API_URL =
   typeof window === "undefined"
     ? (process.env.NEXT_API_URL || "http://localhost:5000/api")
-    : "/api-proxy";
+    : (process.env.NEXT_PUBLIC_API_URL || "/api-proxy");
 
 let csrfToken = null;
 
@@ -15,12 +15,18 @@ export async function getCsrfToken() {
     }
   );
 
-  const data = await response.json();
-
   if (!response.ok) {
-    throw new Error( data.message || "Unable to initialize security session." );
+    let errorMessage = "Unable to initialize security session.";
+    try {
+      const data = await response.json();
+      errorMessage = data.message || errorMessage;
+    } catch {
+      errorMessage = `Server error (${response.status}). Please ensure the backend is running.`;
+    }
+    throw new Error(errorMessage);
   }
 
+  const data = await response.json();
   csrfToken = data.csrfToken;
 
   return csrfToken;
@@ -68,11 +74,17 @@ export async function apiRequest(
       }
     );
 
-  const data = await response.json();
-
   if (!response.ok) {
-    throw new Error( data.message || "Something went wrong." );
+    let errorMessage = "Something went wrong.";
+    try {
+      const data = await response.json();
+      errorMessage = data.message || errorMessage;
+    } catch {
+      errorMessage = `Server error (${response.status}). Please check your connection or backend status.`;
+    }
+    throw new Error(errorMessage);
   }
 
+  const data = await response.json();
   return data;
 }
