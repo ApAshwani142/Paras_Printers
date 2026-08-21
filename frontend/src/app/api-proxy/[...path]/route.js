@@ -72,13 +72,22 @@ async function handleProxy(request, params) {
     const responseHeaders = new Headers();
     for (const [key, value] of res.headers.entries()) {
       const lowerKey = key.toLowerCase();
-      // Don't forward compression or length headers since fetch decompresses the body automatically
+      // Don't forward compression, length, or set-cookie headers directly
       if (
         lowerKey !== "transfer-encoding" &&
         lowerKey !== "content-encoding" &&
-        lowerKey !== "content-length"
+        lowerKey !== "content-length" &&
+        lowerKey !== "set-cookie"
       ) {
         responseHeaders.set(key, value);
+      }
+    }
+
+    // Forward Set-Cookie headers individually to prevent merging with commas (important for cookie expiration dates)
+    if (res.headers.getSetCookie) {
+      const cookies = res.headers.getSetCookie();
+      for (const cookie of cookies) {
+        responseHeaders.append("set-cookie", cookie);
       }
     }
     
