@@ -52,18 +52,6 @@ export const Footer = () => {
               <li>
                 <Link href="/services" className="hover:text-[var(--primary)]">Printing Services</Link>
               </li>
-              <li>
-                <Link href="/industries" className="hover:text-[var(--primary)]">Industries Served</Link>
-              </li>
-              <li>
-                <Link href="/infrastructure" className="hover:text-[var(--primary)]">Machinery & Plant</Link>
-              </li>
-              <li>
-                <Link href="/quality-assurance" className="hover:text-[var(--primary)]">Quality Assurance</Link>
-              </li>
-              <li>
-                <Link href="/blog" className="hover:text-[var(--primary)]">Technical Blog</Link>
-              </li>
             </ul>
           </div>
 

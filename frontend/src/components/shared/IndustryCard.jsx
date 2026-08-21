@@ -40,15 +40,6 @@ export const IndustryCard = ({ industry }) => {
             ))}
           </div>
         </div>
-
-        <div className="pt-3 border-t border-[var(--border)]">
-          <Link
-            href={`/industries#${industry.slug}`}
-            className="text-xs font-bold text-[var(--primary)] hover:underline inline-flex items-center gap-1"
-          >
-            Explore Industry Solutions <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
       </div>
     </Card>
   );
