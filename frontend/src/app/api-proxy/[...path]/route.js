@@ -71,8 +71,13 @@ async function handleProxy(request, params) {
     // Copy response headers
     const responseHeaders = new Headers();
     for (const [key, value] of res.headers.entries()) {
-      // Don't forward transfer-encoding to avoid compression/chunked errors
-      if (key.toLowerCase() !== "transfer-encoding") {
+      const lowerKey = key.toLowerCase();
+      // Don't forward compression or length headers since fetch decompresses the body automatically
+      if (
+        lowerKey !== "transfer-encoding" &&
+        lowerKey !== "content-encoding" &&
+        lowerKey !== "content-length"
+      ) {
         responseHeaders.set(key, value);
       }
     }
