@@ -766,7 +766,7 @@ export async function resetPassword(
       });
     }
 
-    user.passwordHash = await bcrypt.hash(password, BRCYPT_ROUNDS);
+    user.passwordHash = await bcrypt.hash(password, BCRYPT_ROUNDS);
 
     user.passwordChangedAt = new Date();
 
